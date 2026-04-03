@@ -528,9 +528,11 @@ Keep it really simple for layouts.
 
 For example: 👇🏾👇🏾👇🏾
 
-Take a look at this: https://codepen.io/isocroft/pen/mdxWdYP. If you look at the output of the pen, it looks like it has parts of the layout positioned (as fixed or absolute) but it’s not.
+Take a look at this: 
+<a href="https://codepen.io/isocroft/pen/mdxWdYP">
+https://codepen.io/isocroft/pen/mdxWdYP</a>. If you look at the output of the pen, it looks like it has parts of the layout positioned (as fixed or absolute) but it’s not.
 
-There are exceptions to this but they should only apply to modals, popups, flying menus or a floating navigation.
+There are exceptions to this but they should only apply to <i>modals</i>, <i>popups</i>, <i>flying menus</i> or a <i>floating navigation</i>.
 
 ### Use mostly closed-range CSS media queries 🤩
 There are two broad ways to write your media queries: open-range and closed-range.
@@ -653,13 +655,21 @@ For more examples, take a look at these 2 extra ones:
 ### When writing CSS, the form (skin/look) should always follow the function (context/use-case) and not the other way around🎉
 There is a principle or guideline in architecture and industrial design that goes like this: 
 <a href="https://en.wikipedia.org/wiki/Form_follows_function"><b>
-Form follows function</b></a>. It basically states that the design, style of a building should follow from what that building is meant for.
+Form follows function</b></a>. It basically states that the design, style of a building should 
+follow from what that building is meant for.
 
-One can tell if a person is a novice with CSS from the way they write CSS. Usually, the aim for the novice is to just quickly style the element on the screen without any regard for its’ context or use case. This leads to creating a convoluted mess of distinct CSS ruleset definitions that need to be overridden too many times later on.
+One can tell if a person is a novice with CSS from the way they write CSS. Usually, the aim for the 
+novice is to just quickly style the element on the screen without any regard for its’ context or 
+use case. This leads to creating a convoluted mess of distinct CSS ruleset definitions that need to 
+be overridden too many times later on.
 
-A good example of this (as was have mentioned earlier) is defining a CSS margin directly on an element. This is an attempt to style the element in its’ current context or use case without consideration for other contexts and use cases where it may appear once again. Now, you have to override the margin that was initially set for the former context to fit this newer context.
+A good example of this (as was have mentioned earlier) is defining a CSS margin directly on an 
+element. This is an attempt to style the element in its’ current context or use case without 
+consideration for other contexts and use cases where it may appear once again. Now, you have to 
+override the margin that was initially set for the former context to fit this newer context.
 
-Another bigger example of this is the excessive use of utility classes (especially in CSS frameworks like Tailwind) and its many drawbacks. You see back in the day, during the days of 
+Another bigger example of this is the excessive use of utility classes (especially in CSS frameworks 
+like Tailwind) and its many drawbacks. You see back in the day, during the days of 
 <a href="https://www.w3.org/TR/2018/SPSD-html32-20180315/">
 HTML 3.2</a> and early days of HTML 4, we had presentational tags and attributes that were very similar in concept to utility classes e.g. <span>&lt;font&gt; , &lt;center&gt;, &lt;s&gt;, &lt;i&gt;, bgcolor, cellpadding, color, align, valign</span>. These tags and attributes defined styles for each element much the way inline styles are defined for an element. The issue with this back then was the sheer amount of needless repetition to make elements look, feel and be partially or totally alike.
 
@@ -682,7 +692,7 @@ Let me explain better with an analogy: You see, building a web page using CSS is
 
 However, colors, backgrounds, images, text and sizes can change easily and often.
 
-Furthermore, If you want to name a class that has something to do with structuring content (width, height, display, min-height, max-width, e.t.c.) or setting up layout (flex, block, grid, margin, padding, border e.t.c). Don’t spend too much time trying to come up with a semantic class name, simply utilize utility class names (or utility classes) for this. Only when you wish to do things around visual formatting (e.g. outline, text-transform, font-weight, color, text-align, background-image, background-color, text-indent, font-style, text-decoration) and display styling or formatting (e.g. list-style-type, border-collapse, visibility) you should utilize clear semantic class names.
+Furthermore, If you want to name a class that has something to do with structuring content (<i>width, height, display, min-height, max-width</i>, e.t.c.) or setting up layout (<i>flex, block, grid, margin, padding, border</i> e.t.c). Don’t spend too much time trying to come up with a semantic class name, simply utilize utility class names (or utility classes) for this. Only when you wish to do things around <b>visual formatting</b> (e.g. <i>outline, text-transform, font-weight, color, text-align, background-image, background-color, text-indent, font-style, text-decoration</i>) and <b>display styling</b> or <b>formatting</b> (e.g. <i>list-style-type, border-collapse, visibility</i>) you should utilize clear semantic class names.
 
 I believe that using proper 
 <a href="https://css-tricks.com/semantic-class-names/">
@@ -887,13 +897,13 @@ BEM</a> and
 <a href="https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/">
 OOCSS</a> encourage lengthy override chains.
 
-Which has led me to a novel way of writing CSS called “<i>Context-Aware Styling</i>”.
+Which has led me to a novel way of writing CSS called “<b><i>Context-Aware Styling</i></b>”.
 
-Context-aware styling works well with 
+<b>Context-aware styling</b> works well with 
 <a href="https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/">
 ITCSS</i> (The only existing methodology in CSS that should still be in use even today).
 
-Context-aware styling works by separating form from function which is a more mature way to separate concerns. It highlights the need to use utility classes only for things that hardly change (structure e.g. display, margin, width) and semantic class names + semantic and ARIA attribute selectors for thing that change a lot (skin e.g. color, background-color, font-style).
+<b>Context-aware</b> styling works by separating form from function which is a more mature way to separate concerns. It highlights the need to use utility classes only for things that hardly change (structure e.g. display, margin, width) and semantic class names + semantic and ARIA attribute selectors for thing that change a lot (skin e.g. color, background-color, font-style).
 
 One of the reasons why people find the cascade in CSS annoying is because of how easy it is to abuse it. It takes a lot of experience and discipline to stop this abuse. I have found that when cascade override chains are kept to a minimum, much of the issues with writing CSS disappear. Don’t write more CSS to undo/override existing CSS if you can avoid it and still achieve the same result. Writing more CSS this way is very inefficient.
 
@@ -1050,7 +1060,6 @@ Context-aware styling applied to the markup above:
     </p>
   </div>
 </article>
-
 <aside class="page-control" role="complementary" data-position="bottom">
   <h3 class="header"><!-- A `header` not an `page-controls' header` -->
     An article title
@@ -1061,6 +1070,9 @@ Context-aware styling applied to the markup above:
     </menu>
   </nav>
 </aside>
+```
+
+```
 .page-control .header { /* `.header` class in one context (no overrides) */
   color: brown;
   margin-bottom: 10px;
@@ -1111,7 +1123,9 @@ Context-aware styling applied to the markup above:
 }
 ```
 
-Also, they both don’t properly emphasize separating form from function which is the most important line of separation that matters most other than separating structure from look (or skin). The “Block” in BEM is the form but its’ function is not highlighted properly in context. Neither the “Element” nor the “Modifier” emphasize function nor functional distinction as well.
+Also, they both don’t properly emphasize separating form from function which is the most important line of separation that matters most other than separating structure from look (or skin). The “Block” in 
+<a href="https://getbem.com/introduction/">
+BEM</a> is the form but its’ function is not highlighted properly in context. Neither the “Element” nor the “Modifier” emphasize function nor functional distinction as well.
 
 Therefore, instead of doing this:
 
@@ -1131,6 +1145,9 @@ Therefore, instead of doing this:
 <button class="button" type="submit">
  Send
 </button>
+```
+
+```
 .button {
   display: inline-block;
   border-radius: 3px;
@@ -1171,6 +1188,9 @@ It’s better and more beneficial to do this: 👇🏾👇🏾
 <button class="button" type="submit">
  Send
 </button>
+```
+
+```
 .button {
   display: inline-block;
   border-radius: 3px;
@@ -1203,11 +1223,13 @@ It’s better and more beneficial to do this: 👇🏾👇🏾
 
 Take a design system for example; what is the most obvious thing about how it can be implemented wrongly ? Well, the lack of context (i.e no atoms, molecules, organisms e.t.c). You see; the lack of context makes design systems hard to realize in the most unreliable manner. If you do not know where each component in a design system goes on a fully-detailed web page and how it fits there, styling the design system component on its’ own will only lead to problems later on.
 
-When using context-aware styling in building your design systems, atoms and molecules should have minimal styling based on structure but have no styling at all based on look (e.g. color, borders, outlines box-shadow, border-radius). In other words, they should be “headless components”.
+When using context-aware styling in building your design systems, atoms and molecules should have minimal styling based on structure but have no styling at all based on look (e.g. color, borders, outlines box-shadow, border-radius). In other words, they should be “<i>headless components</i>”.
 
 This is why context matters greatly when writing CSS. As i said earlier that context is the function (separated from the form).
 
-There’s often a very potent concern that limiting the scope of a selector to a particular DOM subtree doesn’t guarantee that it won’t unintentionally affect elements within the same subtree. This issue is well addressed by Context-aware styling.
+There’s often a very potent concern that 
+<a href="https://philipwalton.com/articles/side-effects-in-css/">
+limiting the scope of a selector to a particular DOM subtree doesn’t guarantee that it won’t unintentionally affect elements within the same subtree</a>. This issue is well addressed by Context-aware styling.
 
 See below:
 
@@ -1270,27 +1292,30 @@ h1 {
 }
 ```
 
-Notice the bottom border doesn’t show up in the inner h1 :
-
-<h1>One CSS Example</h1>
+Notice the bottom border doesn’t show up in the inner <span>h1</span>:
 
 ```
+<h1>One CSS Example</h1>
+
 <aside class="display-flex flex-fluid" role="complementary">
   <h1>Another CSS Example</h1>
   <div class="display-flex flex-fixed:[=190px]" role="presentation" data-style-priority>
    <h1>The Last CSS Inner Example</h1>
   </div>
 </aside>
+```
+
 As you see above, the only trade-off is the stack of selectors arranged in order of decreasing specificity.
 
-Also as above, Context-aware styling makes it very easier for us to also manage specificity within the same nested context (or same DOM subtree) without letting things get out of hand. We have defined a data-style-priortity attribute that controls what styles are prioritized within the same nested contexts.
+Also as above, Context-aware styling makes it very easier for us to also manage specificity within the same nested context (or same DOM subtree) without letting things get out of hand. We have defined a <span>data-style-priortity</span> attribute that controls what styles are prioritized within the same nested contexts.
 
-This data-style-priortity attribute works irrespective of CSS source order.
+This <span>data-style-priortity</span> attribute works irrespective of CSS source order.
 
 By arranging the selectors attached to each rule-set in order of decreasing specificity, we have ensured that CSS source order will have no effect on when and how styles get prioritized.
 
-Only now does the bottom border show up in both h1 within the <aside> tag. See below:
+Only now does the bottom border show up in both h1 within the &lt;aside&gt; tag. See below:
 
+```
 <h1>One CSS Example</h1>
 
 <aside class="display-flex flex-fluid" role="complementary" data-style-priority>
@@ -1299,14 +1324,29 @@ Only now does the bottom border show up in both h1 within the <aside> tag. See b
    <h1>The Last CSS Inner Example</h1>
   </div>
 </aside>
-Context-aware styling works well with only one existing methodology: ITCSS. This allows CSS to be written in order of increasing specificity from top to bottom but with some interleaving allowed. So, with the likes of Cascade layers (@layer), Container (@container) queries and now context-aware styling, ITCSS will now become a lot more nuanced which is a good thing.
+```
 
-By focusing too much on context and specificity flatness (the way BEM does), one can introduce problems like low reusability of styles, and too much structure based on the naming of selectors. It’s also possible to easily create lengthy cascade override chains that are not state-based as explained earlier.
+Context-aware styling works well with only one existing methodology: 
+<a href="https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/">
+ITCSS</a>. This allows CSS to be written in order of increasing specificity from top to bottom but with some interleaving allowed. So, with the likes of 
+<a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_layers">Cascade layers (@layer)</a>, 
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries">
+Container (@container)</a> queries and now context-aware styling, 
+<a href="https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/">
+ITCSS</a> will now become a lot more nuanced which is a good thing.
+
+By focusing too much on context and specificity flatness (the way 
+<a href="https://getbem.com/introduction/">
+BEM</a> does), one can introduce problems like low reusability of styles, and too much structure based on the naming of selectors. It’s also possible to easily create lengthy cascade override chains that are not state-based as explained earlier.
 
 Context-aware styling solves all these by only emphasizing context in a reasonably balanced way.
 
-Beware the issue of margin-collapse 😟
-Margin collapse is an occurrence that makes it difficult to have 2 block-level elements with margins sit side-by-side in such a way that the distance from each other is exactly the sum of the margins set on each of them. For more info on this see this article. It’s also highlighted in the CSS 2.1 specifications too.
+### Beware the issue of margin-collapse 😟
+Margin collapse is an occurrence that makes it difficult to have 2 block-level elements with margins sit side-by-side in such a way that the distance from each other is exactly the sum of the margins set on each of them. For more info on this see 
+<a href="https://www.joshwcomeau.com/css/rules-of-margin-collapse/">
+this article</a>. It’s also highlighted in the 
+<a href="http://www.w3.org/TR/CSS21/box.html#collapsing-margins">
+CSS 2.1 specifications</a> too.
 
 Conclusion
 If you look closely, you’d notice that each of the points i gave above are very related to one another. These points will help you write better CSS with much less headaches.
