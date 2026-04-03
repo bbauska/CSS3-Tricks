@@ -80,9 +80,13 @@ button.full-width {
 /* The button resizes properly to fit (even it's container) at any screen size */
 ```
 
-As mentioned earlier, it’s also even more important to do this when styling layout containers. You don’t want to be too overwhelmed by multiple break-points for layouts. In fact, you don’t want to consider too many break-points at all for your layouts. What you want is to have the feel of responsiveness across multiple screen sizes to be gentle and fluid (not sharp and sudden).
+As mentioned earlier, it’s also even more important to do this when styling layout containers. You 
+don’t want to be too overwhelmed by multiple break-points for layouts. In fact, you don’t want to 
+consider too many break-points at all for your layouts. What you want is to have the feel of 
+responsiveness across multiple screen sizes to be gentle and fluid (not sharp and sudden).
 
-I personally only consider multiple break-points when i have tight guideline on how the UI should look on many distinct screen sizes.
+I personally only consider multiple break-points when i have tight guideline on how the UI should 
+look on many distinct screen sizes.
 
 See below:
 
@@ -141,7 +145,10 @@ main:has(.sidebar) {
 ```
 
 ### Always add margins and borders indirectly to any element 🤠
-Adding margins directly to any element using CSS is any easy win in the short-term but a horrific decision in the long-term. The reason is simple: You have to do a lot of work later on to clean-up and override the margins when you use that same element in a different context mostly under a different parent tag (read as parent selector).
+Adding margins directly to any element using CSS is any easy win in the short-term but a horrific 
+decision in the long-term. The reason is simple: You have to do a lot of work later on to clean-up 
+and override the margins when you use that same element in a different context mostly under a 
+different parent tag (read as parent selector).
 
 ```
 /* DON'T DO THIS !!! */
@@ -181,8 +188,6 @@ So, it’s much safer, better, stress-free and cleaner to add margins indirectly
   margin-left: 10px;
   border: 1px solid brown;
 }
-
-
 /**
  * If we move the element with class `.call-to-action` into another parent tag, 
  * it doesn't move with the margin from where it was before.
@@ -221,7 +226,8 @@ body {
 }
 ```
 
-See more in this MDN excerpt.
+See more in 
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height#prefer_unitless_numbers_for_line-height_values">this MDN excerpt</a>.
 
 ### Always set properties inherited by default on the closest parent to element (block or inline) to the target text node(s) or on the target element itself 😊
 When it comes to all CSS properties are inheritable (by default), there are only two categories (as all of them are used for either one of two types of formatting):
@@ -273,6 +279,7 @@ body {
 
 The color and text-align should be defined on the element very close to the text that should have said style like so:
 
+```
 body {
   min-height: 100%;
 }
@@ -281,17 +288,23 @@ span {
   color: black;
   text-align: center;
 }
-There’s an exception to this guideline however, which is for font-family and maybe line-height on the body tag.
+```
 
+There’s an exception to this guideline however, which is for <i>font-family</i> and maybe <i>line-height</i> on the body tag.
+
+```
 body {
   font-family: sans-serif;
 }
-For the font-size property, it is not recommended to set a default font-size on your root (html) except you don’t intend to support users who modify their base font-size browser settings.
+```
+
+For the <i>font-size</i> property, it is not recommended to set a default font-size on your root (html) except you don’t intend to support users who modify their base font-size browser settings.
 
 But, you could set it if you hope to utilize fluid typography sizing on you web page (i.e. the font-size changes according to both the size of the viewport and browser setting for font-size).
 
 See below: 👇🏾👇🏾👇🏾👇🏾👇🏾
 
+```
 /* @INFO: Taken from Kyrieon CSS  source */
 /* @CHECK: */ 
 
@@ -356,10 +369,13 @@ See below: 👇🏾👇🏾👇🏾👇🏾👇🏾
     }
   }
 }
+```
+
 Now, in the sprit and promise of CSS, you can collect and factor out all inheritable CSS properties and rulesets (common to a set of nested elements) to elements much higher up in the nesting hierarchy. However, you should only do this after properly establishing clear and concrete commonalities in these elements that would share this inheritable CSS.
 
 For example:
 
+```
 .comment {
   font-size: 0.68rem;
   letter-spacing: -0.0034em;
@@ -371,10 +387,13 @@ For example:
   text-indent: 0.0625em;
   color: #333;
 }
+```
+
 Now, from the above, you can see that both the .citation and .paragraph classes have some commonality in the inheritable CSS properties which can be factored out.
 
 This will become 👇🏾👇🏾
 
+```
 .feed-block > .comment, /* Use direct descendant selectors '>' */
 .feed-block > .citation {
   font-size: 0.68rem;
@@ -388,9 +407,11 @@ This will become 👇🏾👇🏾
 .citation {
   text-indent: 0.0625em;
 }
+```
+
 I prefer going through the motions of clearly detecting commonality over. time before factoring it out like so. Why ? because, i don’t want to employ the idea of removing obvious duplications (DRY) too early or too prematurely.
 
-It’s okay to use absolute units for horizontal/inline margins and paddings, media-queries, box-shadows, text-shadows, border-radii, outlines and borders 🤗
+### It’s okay to use absolute units for horizontal/inline margins and paddings, media-queries, box-shadows, text-shadows, border-radii, outlines and borders 🤗
 Never make it a habit to use px (pixel), ex, ch or centimeter unit (cm) for all widths, heights, paddings and font-sizes. Why ? It doesn’t scale and can cause problems later on especially where responsive layouts are a requirement or you have to make the web page more legible on certain screens or media.
 
 Use rem unit for margins, paddings and font-sizes because they build on top of the user’s preferences and not override them the way using px does.
@@ -405,6 +426,7 @@ Furthermore, use em for visual formatting values that don’t relate directly to
 
 For instance:
 
+```
 /* `ch` is a '0' character fixed unit so, we don't use `width` to set it */
 
 .textblock p {
@@ -426,10 +448,13 @@ For instance:
   background-color: #333333;
   padding: 0 1.5rem;
 }
+```
+
 Finally, never set widths or heights using fixed/absolute units on buttons and form inputs except you require them to fill up the entire horizontal/vertical space on either side. Use padding and font-size instead to size your buttons for different screen sizes: mobile, desktop, tv e.t.c.
 
 For instance:
 
+```
 /*  !!! USING SOME UNSEMANTIC CLASS NAMES FOR BREVITY !!! */
 
 button,
@@ -464,22 +489,39 @@ object[role="application"] {
   padding: 0.2rem 32px;
   font-size: 0.9rem;
 }
-Also, Tailwind has a bad habit of using mostly rem for everything else except media-queries which i totally detest and i believe is a bad practice because sometimes i want to set a root (html) font-size other than the browser default of 16px. Please, only use px for media-queries (you can perhaps use em/rem for container-queries) when you are not taking the browser font-size settings (or browser zoom) into account. Otherwise, use em for all media-queries (though this wasn’t completely feasible until Safari v15 fixed a nasty bug).
+```
+
+Also, 
+<a href="https://tailwindcss.com/">
+Tailwind</a> has a bad habit of using mostly rem for everything else 
+<a href="https://github.com/tailwindlabs/tailwindcss/discussions/8378">
+except media-queries</a> which i totally detest and i believe is a bad practice because sometimes i want to set a root (html) font-size other than the browser default of 16px. Please, only use px for media-queries (you can perhaps use em/rem for container-queries) when you are not taking the browser font-size settings (or browser zoom) into account. Otherwise, 
+<a href="https://zellwk.com/blog/media-query-units/">
+use em for all media-queries</a> (though this wasn’t completely feasible until Safari v15 fixed a nasty bug).
 
 Also, using ch for media-queries is perfectly fine and very accessible in certain cases (especially when aligning viewport width with user font-size settings on the browser)
 
+```
 @media (max-width: 100ch) { /* @NOTE: `ch` is a fixed/absolute unit */
   /* When the viewport can only hold 100 characters in a line without breaks */
   ...
 }
-Lastly, you probably do not want to use viewport units beyond these 5 tags: <html>, <body> and <header>, <footer>, <main> for accessibility purposes.
+```
 
-Always effect full viewport height on body and html tags 💪🏾
-Normal flow is a concept that doesn’t include vertical expansion of the content area/box of any block-level element. This is the first thing that doesn’t seems obvious when writing CSS for a particular web page in development. The reason why is that no one considers how it can become a hindrance later on. When you don’t setup the height of the body tag, you run into problems when you use fluid heights (in % only) on grand children tags (tags nested inside) of the body tag. If the body tag doesn’t fill the height of the viewport, then the tags inside the body don’t stretch to a height you’d probably desire (since % heights in CSS are relative to the parent tag) when coding up your CSS. If you use viewport units instead of percent units, then you can force the height of the nested tags in the body tag to stretch as you would like but it will be problematic when viewed on mobile or in a responsive situation.
+Lastly, you probably do not want to use viewport units beyond these 5 tags: &lt;html&gt;, &lt;body&gt; and &lt;header&gt;, &lt;footer&gt;, &lt;main&gt; for accessibility purposes.
 
-There are many solutions to this out there including this one. However, i feel they are lacking. The only tag i feel comfortable setting viewport units on is the html tag. Every other tag can have a fluid dimension with a percent unit including the body tag. So my own solution is as setup here.
+### Always effect full viewport height on body and html tags 💪🏾
 
-Never use CSS positioning when building page layout containers ❌
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout">
+Normal flow</a> is a concept that doesn’t include vertical expansion of the content area/box of any block-level element. This is the first thing that doesn’t seems obvious when writing CSS for a particular web page in development. The reason why is that no one considers how it can become a hindrance later on. When you don’t setup the height of the body tag, you run into problems when you use fluid heights (in % only) on grand children tags (tags nested inside) of the body tag. If the body tag doesn’t fill the height of the viewport, then the tags inside the body don’t stretch to a height you’d probably desire (since % heights in CSS are relative to the parent tag) when coding up your CSS. If you use viewport units instead of percent units, then you can force the height of the nested tags in the body tag to stretch as you would like but it will be problematic when viewed on mobile or in a responsive situation.
+
+There are many solutions to this out there including 
+<a href="https://greggod.medium.com/css-do-not-put-height-100-on-the-body-html-e36bda3551b3">
+this one</a>. However, i feel they are lacking. The only tag i feel comfortable setting viewport units on is the html tag. Every other tag can have a fluid dimension with a percent unit including the body tag. So my own solution is as setup 
+<a href="https://codepen.io/isocroft/pen/MWPEKwa">
+here</a>.
+
+### Never use CSS positioning when building page layout containers ❌
 This is in fact a very important thing to take note of. When making layouts and setting up layout containers for a 2-column or 3-column web page, it’s important to make use of either flex box or grid layout systems and avoid using positioning (position: absolute; especially) to achieve what flex box or grid can also achieve. The problems you are guaranteed to run into when you want to start building in responsiveness to the web page is maddening.
 
 Keep it really simple for layouts.
@@ -490,9 +532,10 @@ Take a look at this: https://codepen.io/isocroft/pen/mdxWdYP. If you look at the
 
 There are exceptions to this but they should only apply to modals, popups, flying menus or a floating navigation.
 
-Use mostly closed-range CSS media queries 🤩
+### Use mostly closed-range CSS media queries 🤩
 There are two broad ways to write your media queries: open-range and closed-range.
 
+```
 @media screen (max-width: 45rem) { /* OPEN-RANGE */
   ...
 }
@@ -500,11 +543,13 @@ There are two broad ways to write your media queries: open-range and closed-rang
 @media screen (min-width: 0rem) and (max-width: 45rem) { /* CLOSED-RANGE */
   ...
 }
+```
+
 There seems to be a very innocuous difference between using one over the other but the amount of unnecessary clean-up work you give to yourself when you use open-range media queries isn’t worth it. The CSS rule you assign to a particular CSS selector spans multiple breakpoints when you use open-range media queries so you always have to override them at a larger breakpoint.
 
-Become a Medium member
 For instance:
 
+```
 /* For this media query, the margin of 20px applies to all breakpoints
 
    like: 1024px, 1336px, 1680px and so on and so forth till infinity */
@@ -527,8 +572,11 @@ For instance:
      margin: 0; /* !!! unnecessary CSS code !!! */
    }
 }
+```
+
 But with closed range media queries, i don’t need to clean-up after myself as i write CSS especially when coding mobile-first solutions.
 
+```
 /* For this media query, the margin of 20px doesn't apply to all 
 
    breakpoints */
@@ -546,24 +594,34 @@ But with closed range media queries, i don’t need to clean-up after myself as 
     /* No extra CSS code needed to override anything */
   }
 }
-Tailwind CSS has popularised the use of open-range (min-width) media queries to employ mobile-first styles. Luckily, there’s a way to use close-range styles in Tailwind CSS by using the max-* modifiers for breakpoint ranges which is better than using any of the md:, sm:, lg:, xl: breakpoint modifiers by itself.
+```
 
-There are sometimes when an open-range media query might be necessary when working with max-width or min-width . Yet, under the condition that the minimum for max-width is meant as zero or the maximum for min-width is meant as infinity.
+<a href="https://tailwindcss.com/">
+Tailwind CSS</a> has popularised the use of open-range (<i>min-width</i>) media queries to employ mobile-first styles. Luckily, there’s a way to use close-range styles in 
+<a href="https://tailwindcss.com/">
+Tailwind CSS</a> by using the 
+<a href="https://tailwindcss.com/docs/responsive-design#targeting-a-breakpoint-range">
+max-* modifiers for breakpoint ranges</a> which is better than using any of the md:, sm:, lg:, xl: breakpoint modifiers by itself.
 
-!important — is a tool of very last resort 😎
-One of the reasons i really disliked Bootstrap v2 and v3 was the criminal and flagrant use of the !important rule. It was a pain to be honest.
+There are sometimes when an open-range media query might be necessary when working with <span>max-width</span> or <span>min-width</span>. Yet, under the condition that the minimum for <span>max-width</span> is meant as zero or the maximum for <span>min-width</span> is meant as <i>infinity</i>.
 
-Overriding and building on top of the style definitions of Bootstrap 2 and Bootstrap 3 was a nightmare because of this. The !important rule helps you easily override CSS rule in a ruleset with much low selector specificity than in an existing ruleset. However, it should be use with caution and should be the very last resort after all other cleaner methods have been employed like reordering the source order of the CSS rulesets in question.
+### !important — is a tool of very last resort 😎
+One of the reasons i really disliked Bootstrap v2 and v3 was the criminal and flagrant use of the <i>!important</i> rule. It was a pain to be honest.
 
-Read more here.
+Overriding and building on top of the style definitions of Bootstrap 2 and Bootstrap 3 was a nightmare because of this. The  <i>!important</i> rule helps you easily override CSS rule in a ruleset with much low selector specificity than in an existing ruleset. However, it should be use with caution and should be the very last resort after all other cleaner methods have been employed like reordering the source order of the CSS rulesets in question.
 
-Say hello to “shrink-to-fit” triggers — they come in handy a-times✅
+Read more 
+<a hrefr="https://www.smashingmagazine.com/2010/11/the-important-css-declaration-how-and-when-to-use-it/">
+here</a>.
+
+### Say hello to “shrink-to-fit” triggers — they come in handy a-times✅
 A shrink-to-fit trigger is a specific CSS property-value pair that causes the content area/box of an element to collapse from bounds or edges tightly around its’ contents and in so doing assumes the size of the sum of the sizes of its’ content.
 
-Very popular examples include display: inline-block OR display: inline-flex OR position: absolute OR width: fit-content. You can use shrink-to-fit triggers to safely make a block-level element (which may contain other block-level elements) to behave like an inline element (while also being able to expand in size horizontally) and allow other elements stay beside it on a web page.
+Very popular examples include <i>display: inline-block</i> OR <i>display: inline-flex</i> OR <i>position: absolute</i> OR <i>width: fit-content</i>. You can use shrink-to-fit triggers to safely make a block-level element (which may contain other block-level elements) to behave like an inline element (while also being able to expand in size horizontally) and allow other elements stay beside it on a web page.
 
-We can use shrink-to-fit triggers within utility classes:
+We can use <i>shrink-to-fit</i> triggers within utility classes:
 
+```
 .static\:flex-\[shrink-to-fit\] {
     flex: 1 1 auto;
     position: static;
@@ -585,26 +643,40 @@ We can use shrink-to-fit triggers within utility classes:
     isolation: isolate;
     min-width: fit-content;
 }
+```
+
 For more examples, take a look at these 2 extra ones:
 
-https://codepen.io/isocroft/pen/gOOeqWa
-https://codepen.io/isocroft/pen/WNwgqOb
-When writing CSS, the form (skin/look) should always follow the function (context/use-case) and not the other way around🎉
-There is a principle or guideline in architecture and industrial design that goes like this: Form follows function. It basically states that the design, style of a building should follow from what that building is meant for.
+	1. https://codepen.io/isocroft/pen/gOOeqWa
+	2. https://codepen.io/isocroft/pen/WNwgqOb
+
+### When writing CSS, the form (skin/look) should always follow the function (context/use-case) and not the other way around🎉
+There is a principle or guideline in architecture and industrial design that goes like this: 
+<a href="https://en.wikipedia.org/wiki/Form_follows_function"><b>
+Form follows function</b></a>. It basically states that the design, style of a building should follow from what that building is meant for.
 
 One can tell if a person is a novice with CSS from the way they write CSS. Usually, the aim for the novice is to just quickly style the element on the screen without any regard for its’ context or use case. This leads to creating a convoluted mess of distinct CSS ruleset definitions that need to be overridden too many times later on.
 
 A good example of this (as was have mentioned earlier) is defining a CSS margin directly on an element. This is an attempt to style the element in its’ current context or use case without consideration for other contexts and use cases where it may appear once again. Now, you have to override the margin that was initially set for the former context to fit this newer context.
 
-Another bigger example of this is the excessive use of utility classes (especially in CSS frameworks like Tailwind) and its many drawbacks. You see back in the day, during the days of HTML 3.2 and early days of HTML 4, we had presentational tags and attributes that were very similar in concept to utility classes e.g. <font> , <center> , <s>, <i> , bgcolor , cellpadding , color , align , valign . These tags and attributes defined styles for each element much the way inline styles are defined for an element. The issue with this back then was the sheer amount of needless repetition to make elements look, feel and be partially or totally alike.
+Another bigger example of this is the excessive use of utility classes (especially in CSS frameworks like Tailwind) and its many drawbacks. You see back in the day, during the days of 
+<a href="https://www.w3.org/TR/2018/SPSD-html32-20180315/">
+HTML 3.2</a> and early days of HTML 4, we had presentational tags and attributes that were very similar in concept to utility classes e.g. <span>&lt;font&gt; , &lt;center&gt;, &lt;s&gt;, &lt;i&gt;, bgcolor, cellpadding, color, align, valign</span>. These tags and attributes defined styles for each element much the way inline styles are defined for an element. The issue with this back then was the sheer amount of needless repetition to make elements look, feel and be partially or totally alike.
 
-I fear that with frameworks like Tailwind, it will become hard and quite difficult to manage CSS definitions of sufficient scale and diverse use-case. Tailwind (and other like it) via utility-classes seem to have solved 4 problems with authoring CSS:
+I fear that with frameworks like 
+<a href="https://tailwindcss.com/">
+Tailwind</a>, it will become hard and quite difficult to manage CSS definitions of sufficient scale and diverse use-case. 
+<a href="https://tailwindcss.com/">
+Tailwind</a> (and other like it) via utility-classes seem to have solved 4 problems with authoring CSS:
 
-Duplicated Code — CSS styles that have been duplicated in error under 2 different selector names/titles
-Dead Code — CSS styles that no longer referenced within markup because the markup that previously referenced them have been deleted or updated over time.
-Faster Development — CSS styles are applied quickly to the markup without the need to alternate frequently between the CSS file and HTML (or JSX) file.
-Inconsistent Nomenclature for selectors — CSS styles are packaged well enough to avoid team members stepping all over themselves.
-Furthermore, the cost of using utility classes excessively is felt elsewhere right in the markup especially when you need to apply styles based on the parent element (or ancestor) state, loads of unused utility classes (if you don’t use a build tool to help you out) and nasty specificity issues. However, I do believe that utility classes have merit but only for things in CSS that do not change easily or often e.g. layout and structure.
+	- Duplicated Code — CSS styles that have been duplicated in error under 2 different selector names/titles
+	- Dead Code — CSS styles that no longer referenced within markup because the markup that previously referenced them have been deleted or updated over time.
+	- Faster Development — CSS styles are applied quickly to the markup without the need to alternate frequently between the CSS file and HTML (or JSX) file.
+	-	Inconsistent Nomenclature for selectors — CSS styles are packaged well enough to avoid team members stepping all over themselves.
+	
+Furthermore, the cost of using utility classes excessively is felt elsewhere right in the markup especially 
+<a href="https://news.ycombinator.com/item?id=41412259">
+when you need to apply styles based on the parent element (or ancestor) state</a>, loads of unused utility classes (if you don’t use a build tool to help you out) and nasty specificity issues. However, I do believe that utility classes have merit but only for things in CSS that do not change easily or often e.g. layout and structure.
 
 Let me explain better with an analogy: You see, building a web page using CSS is a lot like building a house. There are parts of the house that do not change easily or often like the structural works (e.g. the foundation, beams/lintels). Then, there are the parts that do change easily (e.g. the windows, doors, roofing, paint job) and can also be changed often. While using CSS, layouts (and other things related to structure) don’t change easily or often.
 
@@ -612,14 +684,18 @@ However, colors, backgrounds, images, text and sizes can change easily and often
 
 Furthermore, If you want to name a class that has something to do with structuring content (width, height, display, min-height, max-width, e.t.c.) or setting up layout (flex, block, grid, margin, padding, border e.t.c). Don’t spend too much time trying to come up with a semantic class name, simply utilize utility class names (or utility classes) for this. Only when you wish to do things around visual formatting (e.g. outline, text-transform, font-weight, color, text-align, background-image, background-color, text-indent, font-style, text-decoration) and display styling or formatting (e.g. list-style-type, border-collapse, visibility) you should utilize clear semantic class names.
 
-I believe that using proper Semantic classes with a mix of functional attribute selectors for the things that change easily and often while using Utility classes for the things that hardly change, will bring about better CSS authoring that we can rely on even at scale.
+I believe that using proper 
+<a href="https://css-tricks.com/semantic-class-names/">
+Semantic classes</a> with a mix of 
+<a href="https://www.smashingmagazine.com/2013/08/semantic-css-with-intelligent-selectors/">
+functional attribute selectors</a> for the things that change easily and often while using 
+<a href="https://css-irl.info/a-year-of-utility-classes/">
+Utility classes</a> for the things that hardly change, will bring about better CSS authoring that we can rely on even at scale.
 
 For example (CSS for a news website/PWA): 👇🏾👇🏾👇🏾👇🏾
 
+```
 /* Let's assume we were building a news website/PWA */
-
-
-
 /* custom UTILITY CLASSES here for layout or just use [ TAILWIND CSS ] */
 
 .display-block {
@@ -768,30 +844,54 @@ a[href][target="_blank"][rel="external"]:before {
 @media (any-hover: none) and (pointer: coarse) {
   /* Show the button all the time */
 }
+```
+
 I do earnestly think that the future of CSS authoring on the web will require a healthy balance of Semantic and Utility classes/attributes which are arranged within CSS source files and folders by feature and not by type. This will reduce the occurrence of duplicated code and dead code and make it easier to find semantic styles when you need to change/modify them.
 
-Always use context-aware styling 🤗
-Tailwind CSS has made utility-classes not just a first-class citizens but also the one and only way to style web pages. This has led (sadly) to overusing utility classes (as stated earlier). This has gotten to the point where it becomes very hard to update/modify a long space-separated list of utility classes when needed without special code editor tricks to help you along.
+### Always use context-aware styling 🤗
 
-Tailwind CSS is definitely quicker to write and easier to maintain (relative to past alternatives). But, it has its’ own specific maintenance issues.
+<a href="https://tailwindcss.com/">
+Tailwind CSS</a> has made utility-classes not just a first-class citizens but also the one and only way to style web pages. This has led (sadly) to overusing utility classes (as stated earlier). This has gotten to the point where it becomes very hard to update/modify a long space-separated list of utility classes when needed without special code editor tricks to help you along.
 
-BEM and OOCSS also have their issues too.
+<a href="https://tailwindcss.com/">
+Tailwind CSS</a> is definitely quicker to write and easier to maintain (relative to past alternatives). But, it has its’ own specific maintenance issues.
 
-There’s one thing that makes CSS hard to write in the long-term (whether you use Tailwind CSS or not) and that is what i call “lengthy cascade override chains”. Excessively overriding styles across multiple selectors (within or outside media queries) can only lead to one thing — frustration and stress with writing CSS!
+<a href="https://getbem.com/introduction">
+BEM</a> and 
+<a href="https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/">
+OOCSS</a> also have their issues too.
 
-What is a cascade override chain ?
+There’s one thing that makes CSS hard to write in the long-term (whether you use 
+<a href="https://tailwindcss.com/">
+Tailwind CSS</a> or not) and that is what i call “<i>lengthy cascade override chains</i>”. Excessively overriding styles across multiple selectors (within or outside media queries) can only lead to one thing — frustration and stress with writing CSS!
 
-A cascade override chain is a situation where the CSS rules within two or more selector definitions that pertain to the same HTML tag/element (or set of HTML tags/elements) are overridden in turn as the rules of the cascade logic are applied by the browser.
+What is a <i>cascade override chain</i>?
 
-Employing BEM leads to tight coupling (via class names), lots of duplication and bloat. There’s no emphasis on context and classes are used for all styling without paying proper attention to specificity from other selectors. However, BEM is really good at helping to avoid accidental side-effects based on the global cascade. Yet, the cost at which it does well to avoidd accidental side-effect is great.
+A <i>cascade override chain</i> is a situation where the CSS rules within two or more selector definitions that pertain to the same HTML tag/element (or set of HTML tags/elements) are overridden in turn as the rules of the cascade logic are applied by the browser.
 
-On the other hand, OOCSS emphasises premature separation of concerns. It states that structure should be separated from skin. However, under what context should the separation happen to make it very meaningful ? That is a more important question. Still, OOCSS helps very well with very high levels of style reuse.
+Employing 
+<a href="https://getbem.com/introduction">
+BEM</a> leads to tight coupling (via class names), lots of duplication and bloat. There’s no emphasis on context and classes are used for all styling without paying proper attention to specificity from other selectors. However, 
+<a href="https://getbem.com/introduction">
+BEM</a> is really good at helping to avoid accidental side-effects based on the global cascade. Yet, the cost at which it does well to avoidd accidental side-effect is great.
 
-In addition to all these, BEM and OOCSS encourage lengthy override chains.
+On the other hand, 
+<a href="https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/">
+OOCSS</a> emphasises premature separation of concerns. It states that structure should be separated from skin. However, under what context should the separation happen to make it very meaningful ? That is a more important question. Still, 
+<a href="https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/">
+OOCSS</a> helps very well with very high levels of style reuse.
 
-Which has led me to a novel way of writing CSS called “Context-Aware Styling”.
+In addition to all these, 
+<a href="https://getbem.com/introduction">
+BEM</a> and 
+<a href="https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/">
+OOCSS</a> encourage lengthy override chains.
 
-Context-aware styling works well with ITCSS (The only existing methodology in CSS that should still be in use even today).
+Which has led me to a novel way of writing CSS called “<i>Context-Aware Styling</i>”.
+
+Context-aware styling works well with 
+<a href="https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/">
+ITCSS</i> (The only existing methodology in CSS that should still be in use even today).
 
 Context-aware styling works by separating form from function which is a more mature way to separate concerns. It highlights the need to use utility classes only for things that hardly change (structure e.g. display, margin, width) and semantic class names + semantic and ARIA attribute selectors for thing that change a lot (skin e.g. color, background-color, font-style).
 
@@ -801,24 +901,49 @@ It is known that one of the most fundamental mistakes made by the earlier design
 
 The best way to can we minimize the excessive occurrence of cascade overrides is by reducing and/or eliminating duplicate styles as much as possible and encapsulating style within contexts — styles never leak out of their context only within (i.e. styles only influence other contexts nested within and never other contexts outside).
 
-These are some of the things that methodologies like BEM don’t promote.
+These are some of the things that methodologies like 
+<a href="https://getbem.com/introduction/">
+BEM</a> don’t promote.
 
-- Avoid bloat in CSS by minimizing needless duplication.
+	- Avoid bloat in CSS by minimizing needless duplication.
 
-- Prioritize appending CSS styles to extending (and likely overriding) CSS styles across multiple selectors except where a pseudo-class is involved for same-context state-based overrides or a semantic attribute selector is involved.
+	- Prioritize appending CSS styles to extending (and likely overriding) CSS styles across multiple selectors except where a pseudo-class is involved for same-context state-based overrides or a semantic attribute selector is involved.
 
-- CSS styles that leak into other contexts inside them can be scoped better with attribute selectors and the new cascade layers(@layer syntax).
+	- CSS styles that leak into other contexts inside them can be scoped better with attribute selectors and the new cascade layers(@layer syntax).
 
-I strongly believe that in 2023 going forward, you shouldn’t be using BEM (Block-Element-Modifier) or OOCSS (Object-oriented CSS) because of how flawed they are. This is not to say that BEM and OOCSS have zero value. BEM and OOCSS are the reason we have had Bootstrap CSS and Tailwind CSS in the first place because of the groundwork that was done with them.
+I strongly believe that in 2023 going forward, you shouldn’t be using 
+<a href="https://getbem.com/introduction/">
+BEM (Block-Element-Modifier)</a> or 
+<a href="https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/">
+OOCSS (Object-oriented CSS)</a> because of how flawed they are. This is not to say that 
+<a href="https://getbem.com/introduction/">
+BEM</a> and 
+<a href="https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/">
+OOCSS</a> have zero value. 
+<a href="https://getbem.com/introduction/">
+BEM</a> and 
+<a href="https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/">
+OOCSS</a> are the reason we have had 
+<a href="https://getbootstrap.com/">
+Bootstrap CSS</a> and 
+<a href="https://tailwindcss.com/">
+Tailwind CSS</a> in the first place because of the groundwork that was done with them.
 
-Also, BEM and OOCSS do have very fantastic premise about not letting a given (dependent) selector depend on the defined styles of another selector while separating styles into very reusable and modular pieces each having their own function for structure and looks (or skin). In other words atomic CSS
+Also, 
+<a href="https://getbem.com/introduction/">
+BEM</a> and 
+<a href="https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/">
+OOCSS</a> do have very fantastic premise about not letting a given (dependent) selector depend on the defined styles of another selector while separating styles into very reusable and modular pieces each having their own function for structure and looks (or skin). In other words atomic CSS
 
 This is all well and nice but premature (as stated earlier).
 
-Methodologies like BEM create bloat in CSS code and create a situation where a HTML element is excessively bound to its context. (i.e. where a styled HTML element appears on a HTML document).
+Methodologies like 
+<a href="https://getbem.com/introduction/">
+BEM</a> create bloat in CSS code and create a situation where a HTML element is excessively bound to its context. (i.e. where a styled HTML element appears on a HTML document).
 
 For example, lets’ consider the markup below (which is BEM themed):
 
+```
 <article class="article"> <!-- BLOCK -->
   <h3 class="article__header"><!-- BLOCK__ELEMENT -->
     An article title
@@ -835,10 +960,13 @@ For example, lets’ consider the markup below (which is BEM themed):
     </p>
   </div>
 </article>
+```
+
 The issue with the class name selectors here is that they facilitate a lot of coupling and bloat.
 
 Like so:
 
+```
 .article__header {
   font-weight: bolder;
   color: lightgray;
@@ -895,10 +1023,17 @@ Like so:
   padding: 5px;
   color: cyan;
 }
-So, as you can see, the problem here with BEM (or even OOCSS) is that they both either do not emphasise the importance of context enough or over-emphasize it thereby tightly coupling a semantic class name to its’ context. They both treat context as either an unimportant aspect of styling web pages or of greater importance than it really is in the moment.
+```
+
+So, as you can see, the problem here with 
+<a href="https://getbem.com/introduction/">
+BEM</a> (or even 
+<a href="https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/">
+OOCSS</a>) is that they both either do not emphasise the importance of context enough or over-emphasize it thereby tightly coupling a semantic class name to its’ context. They both treat context as either an unimportant aspect of styling web pages or of greater importance than it really is in the moment.
 
 Context-aware styling applied to the markup above:
 
+```
 <article class="article"> <!-- OUTERMOST CONTEXT -->
   <h3 class="header"><!-- A `header` not an `articles' header` -->
     An article title
@@ -974,10 +1109,13 @@ Context-aware styling applied to the markup above:
   /* overriding "color" property inherited from `.content` */
   color: cyan;
 }
+```
+
 Also, they both don’t properly emphasize separating form from function which is the most important line of separation that matters most other than separating structure from look (or skin). The “Block” in BEM is the form but its’ function is not highlighted properly in context. Neither the “Element” nor the “Modifier” emphasize function nor functional distinction as well.
 
 Therefore, instead of doing this:
 
+```
 <button class="button">
  Normal button
 </button>
@@ -1013,8 +1151,11 @@ Therefore, instead of doing this:
 .button--state-danger {
   color: #990000;
 }
+```
+
 It’s better and more beneficial to do this: 👇🏾👇🏾
 
+```
 <button class="button">
  Normal button
 </button>
@@ -1058,6 +1199,8 @@ It’s better and more beneficial to do this: 👇🏾👇🏾
   width: 100%;
   box-sizing: border-box;
 }
+```
+
 Take a design system for example; what is the most obvious thing about how it can be implemented wrongly ? Well, the lack of context (i.e no atoms, molecules, organisms e.t.c). You see; the lack of context makes design systems hard to realize in the most unreliable manner. If you do not know where each component in a design system goes on a fully-detailed web page and how it fits there, styling the design system component on its’ own will only lead to problems later on.
 
 When using context-aware styling in building your design systems, atoms and molecules should have minimal styling based on structure but have no styling at all based on look (e.g. color, borders, outlines box-shadow, border-radius). In other words, they should be “headless components”.
@@ -1068,6 +1211,7 @@ There’s often a very potent concern that limiting the scope of a selector to a
 
 See below:
 
+```
 h1 {
   outline: none;
 }
@@ -1124,10 +1268,13 @@ h1 {
   text-align: center;
   border: none;
 }
+```
+
 Notice the bottom border doesn’t show up in the inner h1 :
 
 <h1>One CSS Example</h1>
 
+```
 <aside class="display-flex flex-fluid" role="complementary">
   <h1>Another CSS Example</h1>
   <div class="display-flex flex-fixed:[=190px]" role="presentation" data-style-priority>
