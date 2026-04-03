@@ -1,3 +1,23 @@
+# frameworks.md
+
+CSS is a very declarative and expressive yet easily misunderstood and misused styling language. I have often maintained that CSS is easy to learn but harder to use. It requires the full cooperation of markup (HTML) and also a crucial understanding of CSS layered approach to styling to get things done well and simply even at scale.
+
+One of the many things that most engineers don’t know about writing CSS (and seem not to appreciate about CSS) is that less is always more. Trying to write more CSS to undo existing CSS leads to frustrations and problems (with few exceptions). It is the job of the developer (frontend) to set the stage for CSS and markup (HTML) to both play nice together. But sometimes, engineers who suffer from this lack of clarity, mess things up quickly.
+
+<!-- image -->
+
+Ever since CSS frameworks made it to mainstream web development from (Bootstrap 2.x–5.x), (Foundation 0.x), (Primer 1.x — 21.x), (Bulma 0.x) all the way now to (Tailwind 1.x-3.x), It has been a rollercoaster ride to work with each of them.
+
+There has been serious low points and also much serious high points in the evolution and journey of the CSS ecosystem from the introduction of methodologies like BEM or ITCSS (i very much encourage you to learn about and use ITCSS but not BEM and i will explain why later on) to the abuse of the !important rule or the abuse of utility classes by Tailwind CSS, frontend developers have found their way through it all.
+
+However, there are tiny salient helpful tips for writing CSS in a much stress-free, compact and scalable way that have gone almost unknown by many practitioners for a long while. Only very few CSS developers in the world take advantage of them.
+
+Today, i want to share some of these tips with you. So, buckle up and strap in tight! It’s gonna be fun.
+
+Here we gooo…. 🎉🎉🎉
+
+
+<blockquote>
 Before you continue reading this article, there are a few terms and concepts i assume you should be aware of prior. Please, if you don’t have knowledge of these, i urge you to take a second to read them up (or skim through them — to refresh your memory). These terms and concepts will be important to the rest of this article and are as follows: 
 <a href="https://web.dev/learn/css/specificity/">
 Specificity</a>, 
@@ -7,6 +27,7 @@ Specificity</a>,
 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Quirks_Mode_and_Standards_Mode">Quirks Mode<a>, 
 <a href="https://css-tricks.com/css-ruleset-terminology/">CSS RuleSet</a>, 
 <a href="https://people.goshen.edu/~paulmr/physix/385/pub/css2.php">CSS Layout Containers</a>.
+</blockquote>
 
 This article also assumes that you know the basic CSS properties and some of their values and require no primer or formal introduction to them.
 
