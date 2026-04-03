@@ -70,10 +70,11 @@ Below: Here’s some sample email code showing how you’d use a min-width media
   }
 }
 &lt;/style&gt;
+</pre>
 ## Combining min-width and max-width media queries
 ##
 @media only screen and (max-width: 600px) and (min-width: 400px)  {...}
-##
+## Responsive-first - smart phone then tablet then laptop and lastly personal ocmputer.
 @media only screen and (max-width: 600px) {...}
 ##
 <pre>
