@@ -1,5 +1,6 @@
 ##
-<style>
+<pre>
+&lt;style&gt;
   :root {
     color-scheme: light dark;
     supported-color-schemes: light dark;
@@ -27,7 +28,8 @@
     margin-top: 2em !important;
   }
 }
-</style>
+&lt;/style&gt;
+##
 Above: This will give you a responsive two-column layout in which mobile styles are displayed when the 
 device width hits 480px or smaller. The problem, however, is that this is not a mobile-first 
 approach to coding. If you’d rather build an optimal design for smartphones, and then have your 
@@ -36,7 +38,8 @@ emails adapt and expand for larger screens, the min-width media query is a bette
 So, if an email recipient views your campaign on a smartphone with a display less than 600 pixels wide, it will not show the defined styles. In this situation, you code for the smaller screens first and used the media query to define desktop styles.
 Below: Here’s some sample email code showing how you’d use a min-width media query:
 ##
-<style>
+<pre>
+&lt;style&gt;
   :root {
     color-scheme: light dark;
     supported-color-schemes: light dark;
@@ -62,7 +65,7 @@ Below: Here’s some sample email code showing how you’d use a min-width media
     margin-top: 0;
   }
 }
-</style>
+&lt;/style&gt;
 ##
 Combining min-width and max-width media queries
 ##
@@ -70,6 +73,7 @@ Combining min-width and max-width media queries
 ##
 @media only screen and (max-width: 600px) {...}
 ##
+<pre>
 @media screen and (orientation: landscape) {
   body::after {
     content: "Landscape";
@@ -91,7 +95,9 @@ body {
   width: 100vw;
   font-size: 10vmax;
 }
+</pre>
 ##
+<pre>
 @media all and (orientation: landscape) {
    /* Styles for landscape mode. */
 }
@@ -99,7 +105,9 @@ body {
 @media all and (orientation: portrait) {
    /* Styles for portrait mode. */
 }
+</pre>
 ##
+<pre>
 @media only screen and ( min-width: 50em ) {
   .open-book {
     margin: 1em;
@@ -221,3 +229,5 @@ body {
     padding-left: 3em;  /* 4em; */
   }
 }  /* end of @media only screen and ( min-width: 50em ) */
+</pre>
+
