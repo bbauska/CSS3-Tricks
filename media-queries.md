@@ -1,9 +1,9 @@
-# CSS media-queries.md - responsive first.
+<h1>CSS media-queries.md - responsive first.</h1>
 Below: This will give you a responsive two-column layout in which mobile styles are displayed when the 
 device width hits 480px or smaller. The problem, however, is that this is not a mobile-first 
 approach to coding. If you’d rather build an optimal design for smartphones, and then have your 
 emails adapt and expand for larger screens, the min-width media query is a better option.
-##
+<br>
 <pre>
 &lt;style&gt;
   :root {
@@ -35,13 +35,13 @@ emails adapt and expand for larger screens, the min-width media query is a bette
 }
 &lt;/style&gt;
 </pre>
-##
-So, if an email recipient views your campaign on a smartphone with a display less than 600 pixels 
+<br>
+<p>So, if an email recipient views your campaign on a smartphone with a display less than 600 pixels 
 wide, it will not show the defined styles. In this situation, you code for the smaller screens 
-first and used the media query to define desktop styles.
+first and used the media query to define desktop styles.</p>
 
-Below: Here’s some sample email code showing how you’d use a min-width media query:
-##
+<p>Below: Here’s some sample email code showing how you’d use a min-width media query:</p>
+<br>
 <pre>
 &lt;style&gt;
   :root {
@@ -71,12 +71,12 @@ Below: Here’s some sample email code showing how you’d use a min-width media
 }
 &lt;/style&gt;
 </pre>
-## Combining min-width and max-width media queries
-##
-@media only screen and (max-width: 600px) and (min-width: 400px)  {...}
-## Responsive-first - smart phone then tablet then laptop and lastly personal ocmputer.
-@media only screen and (max-width: 600px) {...}
-##
+<h2>Combining min-width and max-width media queries</h2>
+
+<b>@media only screen and (max-width: 600px) and (min-width: 400px)  {...}</b>
+<h2>Responsive-first - smart phone then tablet then laptop and lastly personal ocmputer.</h2>
+<b>@media only screen and (max-width: 600px) {...}</b>
+
 <pre>
 @media screen and (orientation: landscape) {
   body::after {
@@ -100,7 +100,7 @@ body {
   font-size: 10vmax;
 }
 </pre>
-##
+<br><br>
 <pre>
 @media all and (orientation: landscape) {
    /* Styles for landscape mode. */
@@ -110,7 +110,7 @@ body {
    /* Styles for portrait mode. */
 }
 </pre>
-##
+<br><br>
 <pre>
 @media only screen and ( min-width: 50em ) {
   .open-book {
