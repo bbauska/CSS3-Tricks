@@ -6,29 +6,26 @@ emails adapt and expand for larger screens, the min-width media query is a bette
 <br>
 <pre>
 &lt;style&gt;
-  :root {
-    color-scheme: light dark;
-    supported-color-schemes: light dark;
-    font-size: 16px;
-    font-color: #222;
-  }
-
-  h2 {
-    margin: 0;
-  }
-
-  .column {
-    width: 50%;
-    display: table-cell;
-    padding: .5em;
-  }
+:root {
+  color-scheme: light dark;
+  supported-color-schemes: light dark;
+  font-size: 16px;
+  font-color: #222;
+}
+h2 {
+  margin: 0;
+}
+.column {
+  width: 50%;
+  display: table-cell;
+  padding: .5em;
+}
 
 @media screen and (max-width:480px) {
   .column {
     display: block !important;
     width: 100% !important;
   }
-
   .column:last-child {
     margin-top: 2em !important;
   }
@@ -44,20 +41,18 @@ first and used the media query to define desktop styles.</p>
 <br>
 <pre>
 &lt;style&gt;
-  :root {
-    color-scheme: light dark;
-    supported-color-schemes: light dark;
-    font-size: 16px;
-    font-color: #222;
-  }
-
-  h2 {
-    margin: 0;
-  }
-
-  .column:last-child {
-    margin-top: 2em;
-  }
+:root {
+  color-scheme: light dark;
+  supported-color-schemes: light dark;
+  font-size: 16px;
+  font-color: #222;
+}
+h2 {
+  margin: 0;
+}
+.column:last-child {
+  margin-top: 2em;
+}
 
 @media screen and (min-width:480px) {
   .column {
@@ -139,7 +134,7 @@ body {
     width: 4em;
     z-index: 1;
   }
-  .open-book > * {
+  .open-book &gt; * {
     column-count: 2;
     column-gap: 6em;
     position: relative;
